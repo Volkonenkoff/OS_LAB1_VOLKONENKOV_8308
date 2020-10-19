@@ -380,6 +380,24 @@ void DetailedDriveType(UINT d)
 	}
 }
 
+void DetailedFSO(DWORD d)
+{
+	cout << "Опции файловой системы: "<<endl;
+	if (d & FS_CASE_IS_PRESERVED) cout << "\t-При записи на диск сохраняется регистр букв в имени файла" << endl;
+	if (d & FS_CASE_SENSITIVE) cout << "\t-Поддерживает поиск файлов с учетом регистра букв в именах" << endl;
+	if (d & FS_UNICODE_STORED_ON_DISK) cout << "\t-Поддерживает хранение на диске имен файлов в UNICODE" << endl;
+	if (d & FS_PERSISTENT_ACLS) cout << "\t-Способна оперировать со списками контроля доступа(ACL). Доступно только в NTFS" << endl;
+	if (d & FS_FILE_COMPRESSION) cout << "\t-Поддерживает сжатие файлов" << endl;
+	if (d & FS_VOL_IS_COMPRESSED) cout << "\t-Данный том с ФС был сжат" << endl;
+	if (d & FILE_NAMED_STREAMS) cout << "\t-Поддерживает именованные потоки" << endl;
+	if (d & FILE_SUPPORTS_ENCRYPTION) cout << "\t-Поддерживает Encrypted File System (EFS)" << endl;
+	if (d & FILE_SUPPORTS_OBJECT_IDS) cout << "\t-Поддерживает идентификаторы объектов" << endl;
+	if (d & FILE_SUPPORTS_REPARSE_POINTS) cout << "\t-Поддерживает точки повторного разбора" << endl;
+	if (d & FILE_SUPPORTS_SPARSE_FILES) cout << "\t-Поддерживает разреженные файлы" << endl;
+	if (d & FILE_VOLUME_QUOTAS) cout << "\t-Поддерживает дисковые квоты\n" << endl;
+
+}
+
 void DetailedVolumeInfo(BOOL b, TCHAR* VNB, TCHAR* FS, DWORD SN, DWORD MF, DWORD FSO) {
 	if (b != false)
 	{
@@ -401,7 +419,7 @@ void DetailedVolumeInfo(BOOL b, TCHAR* VNB, TCHAR* FS, DWORD SN, DWORD MF, DWORD
 		}
 		cout<< endl;
 		cout << "Максимальная длина файла: " << MF << endl;
-		cout << "Опции файловой системы: " <<FSO << endl;
+		DetailedFSO(FSO);
 		cout << "Серийный номер раздела: " << SN << endl;
 	}
 	else cout << "\nПроизошла ошибка: " << GetLastError() << endl;
