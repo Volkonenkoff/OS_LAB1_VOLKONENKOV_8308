@@ -17,7 +17,7 @@ void DiskBufferization(DWORD DD, vector<string> &buff)
 		{
 			char t = i + 97;
 			buff.push_back(string()+t+":"+"\\"+"\0");
-			//cout <<(i+1) <<". Äèñê " << char(i+65) << "://" << endl;
+			//cout <<(i+1) <<". Ð”Ð¸ÑÐº " << char(i+65) << "://" << endl;
 		}
 	}
 }
@@ -26,7 +26,7 @@ void DiskOutput(vector<string> buf)
 {
 	int j = 0;
 	for (vector<string>::iterator i = buf.begin(); i != buf.end(); i++)
-		cout <<++j<< ". Äèñê " << *i << endl;
+		cout <<++j<< ". Ð”Ð¸ÑÐº " << *i << endl;
 }
 
 void CopyMove()
@@ -36,39 +36,39 @@ void CopyMove()
 	TCHAR BufN[MAX_PATH + 1];
 	
 	BOOL B = 0;
-	cout << "Êîïèðîâàíèå è ïåðåìåùåíèå ôàéëîâ: " << endl;
-	cout << "\t1. Êîïèðîâàíèå ôàéëà" << endl;
-	cout << "\t2. Ïåðåìåùåíèå ôàéëà" << endl;
-	cout << "\t3. Íàçàä" << endl;
+	cout << "ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¸ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð¾Ð²: " << endl;
+	cout << "\t1. ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð°" << endl;
+	cout << "\t2. ÐŸÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð°" << endl;
+	cout << "\t3. ÐÐ°Ð·Ð°Ð´" << endl;
 	do {
 		cin >> k;
 		switch (k)
 		{
 		case '1':
-			cout << "Ââåäèòå ïóòü äî òåêóùåãî ôàéëà" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ñ„Ð°Ð¹Ð»Ð°" << endl;
 			wcin >> BufE;
-			cout << "Ââåäèòå ïóòü äî íîâîãî ôàéëà ôàéëà" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð° Ñ„Ð°Ð¹Ð»Ð°" << endl;
 			wcin >> BufN;
 			B = CopyFile(BufE, BufN, FALSE);
-			if (B == 0) cerr << "Íå óäàëîñü êîïèðîâàòü ôàéë " << GetLastError() << endl;
-			else cout << "Ôàéë óñïåøíî êîïèðîâàí" << endl;
+			if (B == 0) cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» " << GetLastError() << endl;
+			else cout << "Ð¤Ð°Ð¹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½" << endl;
 			break;
 
 		case '2':
-			cout << "Ââåäèòå ïóòü äî òåêóùåãî ôàéëà" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ñ„Ð°Ð¹Ð»Ð°" << endl;
 			wcin >> BufE;
-			cout << "Ââåäèòå ïóòü äî íîâîãî ôàéëà ôàéëà" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð° Ñ„Ð°Ð¹Ð»Ð°" << endl;
 			wcin >> BufN;
 			B = MoveFile(BufE, BufN);
 			if (B == 0) B = MoveFileEx(BufE, BufN, MOVEFILE_COPY_ALLOWED| MOVEFILE_REPLACE_EXISTING);
-			if (B == 0) cerr << "Íå óäàëîñü ïåðåìåñòèòü ôàéë  " << GetLastError() << endl;
-			else cout << "Ôàéë óñïåøíî ïåðåìåù¸í";
+			if (B == 0) cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»  " << GetLastError() << endl;
+			else cout << "Ð¤Ð°Ð¹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰Ñ‘Ð½";
 			break;
 		case '3':
-			cout << "Âû âåðíóëèñü íàçàä\n" << endl;
+			cout << "Ð’Ñ‹ Ð²ÐµÑ€Ð½ÑƒÐ»Ð¸ÑÑŒ Ð½Ð°Ð·Ð°Ð´\n" << endl;
 			break;
 		default:
-			cout << "Òàêîãî ïóíêòà íåò" << endl;
+			cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð½ÐµÑ‚" << endl;
 			break;
 		}
 	} while (k != '1' && k != '2' && k != '3' && B == 0);
@@ -79,16 +79,16 @@ DWORD AttrsInfo()
 {
 	DWORD t=NULL;
 	char k;
-	cout << "Ââåäèòå íîìåðà àòðèáóòîâ (áåç ïðîáåëîâ), êîòîðûå âû õîòèòå óñòàíîâèòü äëÿ ýòîãî ôàéëà: " << endl;
-	cout << " \t1. Àðõèâíûé" << endl;
-	cout << " \t2. Ñêðûòûé" << endl;
-	cout << " \t3. Áåç èíäåêñèðîâàíèÿ" << endl;
-	cout << " \t4. Ñ ôèçè÷åñêè ïåðåìåùåííûìè äàííûìè" << endl;
-	cout << " \t5. Òîëüêî íà ÷òåíèå" << endl;
-	cout << " \t6. Ñèñòåìíûé" << endl;
-	cout << " \t7. Âðåìåííûé" << endl;
-	cout << " \t8. Áåç àòðèáóòîâ (óáèðàåò âñå äðóãèå àòðèáóòû!)" << endl;
-	cout << " \t0. Íàçàä" << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€Ð° Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² (Ð±ÐµÐ· Ð¿Ñ€Ð¾Ð±ÐµÐ»Ð¾Ð²), ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°: " << endl;
+	cout << " \t1. ÐÑ€Ñ…Ð¸Ð²Ð½Ñ‹Ð¹" << endl;
+	cout << " \t2. Ð¡ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹" << endl;
+	cout << " \t3. Ð‘ÐµÐ· Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ" << endl;
+	cout << " \t4. Ð¡ Ñ„Ð¸Ð·Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð½Ñ‹Ð¼Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸" << endl;
+	cout << " \t5. Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð½Ð° Ñ‡Ñ‚ÐµÐ½Ð¸Ðµ" << endl;
+	cout << " \t6. Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ð¹" << endl;
+	cout << " \t7. Ð’Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ð¹" << endl;
+	cout << " \t8. Ð‘ÐµÐ· Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² (ÑƒÐ±Ð¸Ñ€Ð°ÐµÑ‚ Ð²ÑÐµ Ð´Ñ€ÑƒÐ³Ð¸Ðµ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹!)" << endl;
+	cout << " \t0. ÐÐ°Ð·Ð°Ð´" << endl;
 	do {
 		cin >> k;
 		switch (k)
@@ -118,10 +118,10 @@ DWORD AttrsInfo()
 			t = t | FILE_ATTRIBUTE_NORMAL;
 			break;
 		case '0':
-			cout << "Âû âåðíóëèñü íàçàä" << endl;
+			cout << "Ð’Ñ‹ Ð²ÐµÑ€Ð½ÑƒÐ»Ð¸ÑÑŒ Ð½Ð°Ð·Ð°Ð´" << endl;
 			break;
 		default:
-			cout << "Òàêîãî ïóíêòà íåò\n" << endl;
+			cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð½ÐµÑ‚\n" << endl;
 			break;
 		}
 	} while (k != '0');
@@ -131,20 +131,20 @@ DWORD AttrsInfo()
 }
 void FileAttrs(DWORD d)
 {
-	cout << "Ýòîò ôàéë: " << endl;
-	if (d & FILE_ATTRIBUTE_ARCHIVE) cout << "\t-Àðõèâíûé" << endl;
-	if (d & FILE_ATTRIBUTE_COMPRESSED) cout << "\t-Ñæàòûé" << endl;
-	if (d & FILE_ATTRIBUTE_DIRECTORY) cout << "\t-Êàòàëîã" << endl;
-	if (d & FILE_ATTRIBUTE_ENCRYPTED) cout << "\t-Çàøèôðîâàííûé" << endl;
-	if (d & FILE_ATTRIBUTE_HIDDEN) cout << "\t-Ñêðûòûé" << endl;
-	if (d & FILE_ATTRIBUTE_NORMAL) cout << "\t-Áåç äðóãèõ àòðèáóòîâ" << endl;
-	if (d & FILE_ATTRIBUTE_NOT_CONTENT_INDEXED) cout << "\t-Íå èíäåêñèðîâàí" << endl;
-	if (d & FILE_ATTRIBUTE_OFFLINE) cout << "\t-Äàííûå, êîòîðîãî áûëè ïåðåìåùåíû ôèçè÷åñêè" << endl;
-	if (d & FILE_ATTRIBUTE_READONLY) cout << "\t-Òîëüêî íà ÷òåíèå" << endl;
-	if (d & FILE_ATTRIBUTE_REPARSE_POINT) cout << "\t-Ñî ñâÿçàííîé òî÷êîé ïîâòîðíîé îáðàáîòêè" << endl;
-	if (d & FILE_ATTRIBUTE_SPARSE_FILE) cout << "\t-Ðàçðåæåííûé" << endl;
-	if (d & FILE_ATTRIBUTE_SYSTEM) cout << "\t-Ñèñòåìíîãî èñïîëüçîâàíèÿ" << endl;
-	if (d & FILE_ATTRIBUTE_TEMPORARY) cout << "\t-Âðåìåííîãî õðàíåíèÿ\n" << endl;
+	cout << "Ð­Ñ‚Ð¾Ñ‚ Ñ„Ð°Ð¹Ð»: " << endl;
+	if (d & FILE_ATTRIBUTE_ARCHIVE) cout << "\t-ÐÑ€Ñ…Ð¸Ð²Ð½Ñ‹Ð¹" << endl;
+	if (d & FILE_ATTRIBUTE_COMPRESSED) cout << "\t-Ð¡Ð¶Ð°Ñ‚Ñ‹Ð¹" << endl;
+	if (d & FILE_ATTRIBUTE_DIRECTORY) cout << "\t-ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³" << endl;
+	if (d & FILE_ATTRIBUTE_ENCRYPTED) cout << "\t-Ð—Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹" << endl;
+	if (d & FILE_ATTRIBUTE_HIDDEN) cout << "\t-Ð¡ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹" << endl;
+	if (d & FILE_ATTRIBUTE_NORMAL) cout << "\t-Ð‘ÐµÐ· Ð´Ñ€ÑƒÐ³Ð¸Ñ… Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð²" << endl;
+	if (d & FILE_ATTRIBUTE_NOT_CONTENT_INDEXED) cout << "\t-ÐÐµ Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½" << endl;
+	if (d & FILE_ATTRIBUTE_OFFLINE) cout << "\t-Ð”Ð°Ð½Ð½Ñ‹Ðµ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ð±Ñ‹Ð»Ð¸ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ñ‹ Ñ„Ð¸Ð·Ð¸Ñ‡ÐµÑÐºÐ¸" << endl;
+	if (d & FILE_ATTRIBUTE_READONLY) cout << "\t-Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð½Ð° Ñ‡Ñ‚ÐµÐ½Ð¸Ðµ" << endl;
+	if (d & FILE_ATTRIBUTE_REPARSE_POINT) cout << "\t-Ð¡Ð¾ ÑÐ²ÑÐ·Ð°Ð½Ð½Ð¾Ð¹ Ñ‚Ð¾Ñ‡ÐºÐ¾Ð¹ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾Ð¹ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸" << endl;
+	if (d & FILE_ATTRIBUTE_SPARSE_FILE) cout << "\t-Ð Ð°Ð·Ñ€ÐµÐ¶ÐµÐ½Ð½Ñ‹Ð¹" << endl;
+	if (d & FILE_ATTRIBUTE_SYSTEM) cout << "\t-Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð½Ð¾Ð³Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ" << endl;
+	if (d & FILE_ATTRIBUTE_TEMPORARY) cout << "\t-Ð’Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ\n" << endl;
 }
 
 void FileInf(BY_HANDLE_FILE_INFORMATION t)
@@ -154,22 +154,22 @@ void FileInf(BY_HANDLE_FILE_INFORMATION t)
 	BOOL B = 0;
 	B = FileTimeToSystemTime(&(t.ftCreationTime), &st);
 	if (B != 0)
-		cout << "Âðåìÿ è äàòà ñîçäàíèÿ ôàéëà: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
-	else cerr<<"Íå óäàëîñü ïîëó÷èòü â/ä ñîçäàíèÿ ôàéëà. Îøèáêà "<<GetLastError()<<endl;
+		cout << "Ð’Ñ€ÐµÐ¼Ñ Ð¸ Ð´Ð°Ñ‚Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
+	else cerr<<"ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð²/Ð´ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°. ÐžÑˆÐ¸Ð±ÐºÐ° "<<GetLastError()<<endl;
 	B = FileTimeToSystemTime(&(t.ftLastAccessTime), &st);
 	if (B!=0)
-		cout << "Äàòà ïîñëåäíåãî îáðàùåíèÿ: " << st.wDay << "." << st.wMonth << "." << st.wYear <<" "<< st.wHour+3 << ":" << st.wMinute << endl;
-	else cerr << "Íå óäàëîñü ïîëó÷èòü äàòó ïîñëåäíåãî îáðàùåíèÿ. Îøèáêà " << GetLastError() << endl;
+		cout << "Ð”Ð°Ñ‚Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ: " << st.wDay << "." << st.wMonth << "." << st.wYear <<" "<< st.wHour+3 << ":" << st.wMinute << endl;
+	else cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð´Ð°Ñ‚Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
 	B = FileTimeToSystemTime(&(t.ftLastWriteTime), &st);
 	if (B!=0)
-		cout << "Äàòà ïîñëåäíåé ìîäèôèêàöèè: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
-	else cerr << "Íå óäàëîñü ïîëó÷èòü äàòó ïîñëåäíåé ìîäèôèêàöèè. Îøèáêà " << GetLastError() << endl;
-	cout << "Ñåðèéíûé íîìåð äèñêà, íà êîòîðîì íàõîäèòñÿ ôàéë: " << &(t.dwVolumeSerialNumber) << endl;
-	cout << "Ñòàðøåå ñëîâî ðàçìåðà ôàéëà: " << &(t.nFileSizeHigh) << endl;
-	cout << "Ìëàäøåå ñëîâî ðàçìåðà ôàéëà: " << &(t.nFileSizeLow) << endl;
-	cout << "Êîë-âî ññûëîê íà ôàéë â ÔÑ: " << &(t.nNumberOfLinks) << endl;
-	cout << "Ñòàðøåå ñëîâî óíèêàëüíîãî 64-áèòíîãî èäåíòèôèêàòîðà ôàéëà: " << &(t.nFileIndexHigh) << endl;
-	cout << "Ìëàäøåå ñëîâî óíèêàëüíîãî 64-áèòíîãî èäåíòèôèêàòîðà ôàéëà: " << &(t.nFileIndexLow) << endl;
+		cout << "Ð”Ð°Ñ‚Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ¹ Ð¼Ð¾Ð´Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
+	else cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð´Ð°Ñ‚Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ¹ Ð¼Ð¾Ð´Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
+	cout << "Ð¡ÐµÑ€Ð¸Ð¹Ð½Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€ Ð´Ð¸ÑÐºÐ°, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑÑ Ñ„Ð°Ð¹Ð»: " << &(t.dwVolumeSerialNumber) << endl;
+	cout << "Ð¡Ñ‚Ð°Ñ€ÑˆÐµÐµ ÑÐ»Ð¾Ð²Ð¾ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð° Ñ„Ð°Ð¹Ð»Ð°: " << &(t.nFileSizeHigh) << endl;
+	cout << "ÐœÐ»Ð°Ð´ÑˆÐµÐµ ÑÐ»Ð¾Ð²Ð¾ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð° Ñ„Ð°Ð¹Ð»Ð°: " << &(t.nFileSizeLow) << endl;
+	cout << "ÐšÐ¾Ð»-Ð²Ð¾ ÑÑÑ‹Ð»Ð¾Ðº Ð½Ð° Ñ„Ð°Ð¹Ð» Ð² Ð¤Ð¡: " << &(t.nNumberOfLinks) << endl;
+	cout << "Ð¡Ñ‚Ð°Ñ€ÑˆÐµÐµ ÑÐ»Ð¾Ð²Ð¾ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ð¾Ð³Ð¾ 64-Ð±Ð¸Ñ‚Ð½Ð¾Ð³Ð¾ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð° Ñ„Ð°Ð¹Ð»Ð°: " << &(t.nFileIndexHigh) << endl;
+	cout << "ÐœÐ»Ð°Ð´ÑˆÐµÐµ ÑÐ»Ð¾Ð²Ð¾ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ð¾Ð³Ð¾ 64-Ð±Ð¸Ñ‚Ð½Ð¾Ð³Ð¾ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð° Ñ„Ð°Ð¹Ð»Ð°: " << &(t.nFileIndexLow) << endl;
 }
 
 void FileT(HANDLE hf)
@@ -180,15 +180,15 @@ void FileT(HANDLE hf)
 	B = GetFileTime(hf, &CT, &LAT, &LWT);
 	B = FileTimeToSystemTime(&CT, &st);
 	if (B != 0)
-		cout << "Âðåìÿ è äàòà ñîçäàíèÿ ôàéëà: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
-	else cerr << "Íå óäàëîñü ïîëó÷èòü â/ä ñîçäàíèÿ ôàéëà. Îøèáêà " << GetLastError() << endl;
+		cout << "Ð’Ñ€ÐµÐ¼Ñ Ð¸ Ð´Ð°Ñ‚Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
+	else cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð²/Ð´ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
 	B = FileTimeToSystemTime(&LAT, &st);
 	if (B != 0)
-		cout << "Äàòà ïîñëåäíåãî îáðàùåíèÿ: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
-	else cerr << "Íå óäàëîñü ïîëó÷èòü äàòó ïîñëåäíåãî îáðàùåíèÿ. Îøèáêà " << GetLastError() << endl;
+		cout << "Ð”Ð°Ñ‚Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
+	else cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð´Ð°Ñ‚Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
 	B = FileTimeToSystemTime(&LWT, &st);
 	if (B != 0)
-		cout << "Äàòà ïîñëåäíåé ìîäèôèêàöèè: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
+		cout << "Ð”Ð°Ñ‚Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ¹ Ð¼Ð¾Ð´Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour+3 << ":" << st.wMinute << endl;
 
 }
 
@@ -203,9 +203,9 @@ void SFileT(HANDLE hf)
 	{
 		B = SetFileTime(hf, &ft, &ft, &ft);
 		if (B == 0)
-			cerr << "Íå óäàëîñü óñòàíîâèòü òåêóùåå âðåìÿ, êàê âðåìÿ âîçäåéñòâèÿ ñ ôàéëîì. Îøèáêà " << GetLastError() << endl;
+			cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ, ÐºÐ°Ðº Ð²Ñ€ÐµÐ¼Ñ Ð²Ð¾Ð·Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð¼. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
 	}
-	else cerr << "Íå óäàëîñü óñòàíîâèòü òåêóùåå âðåìÿ, êàê âðåìÿ âîçäåéñòâèÿ ñ ôàéëîì. Îøèáêà " << GetLastError() << endl;
+	else cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ, ÐºÐ°Ðº Ð²Ñ€ÐµÐ¼Ñ Ð²Ð¾Ð·Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð¼. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
 
 
 }
@@ -218,8 +218,8 @@ void FileCharset()
 	BOOL B = 0;
 	TCHAR BufN[MAX_PATH + 1];
 	char k;
-	cout << "Ââåäèòå ïóòü ïî êîòîðîìó íóæíî èçìåíèòü ôàéë âìåñòå ñ èìåíåì è ðàñøèðèíèåì ôàéëà íà êîíöå" << endl;
-	cout << "Ïðèìåð: C:\\myfile.txt" << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð¿Ð¾ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð½ÑƒÐ¶Ð½Ð¾ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» Ð²Ð¼ÐµÑÑ‚Ðµ Ñ Ð¸Ð¼ÐµÐ½ÐµÐ¼ Ð¸ Ñ€Ð°ÑÑˆÐ¸Ñ€Ð¸Ð½Ð¸ÐµÐ¼ Ñ„Ð°Ð¹Ð»Ð° Ð½Ð° ÐºÐ¾Ð½Ñ†Ðµ" << endl;
+	cout << "ÐŸÑ€Ð¸Ð¼ÐµÑ€: C:\\myfile.txt" << endl;
 	wcin >> BufN;
 	fHandle = CreateFile(BufN, GENERIC_WRITE,
 		NULL, NULL, OPEN_EXISTING, FILE_WRITE_ATTRIBUTES, NULL);
@@ -227,13 +227,13 @@ void FileCharset()
 		
 		
 		do {
-			cout << "Ðàáîòà ñ ôàéëîì " << endl;
-			cout << "\t1. Àòðèáóòû ôàéëà" << endl;
-			cout << "\t2. Èçìåíèòü àòðèáóòû ôàéëà" << endl;
-			cout << "\t3. Èíôîðìàöèÿ î ôàéëå" << endl;
-			cout << "\t4. Èíôîðìàöèÿ î âðåìåííîì âçàèìîäåéñòâèè ñ ôàéëîì" << endl;
-			cout << "\t5. Óñòàíîâèòü òåêóùåå âðåìÿ âçàèìîäåéñòâèè ñ ôàéëîì" << endl;
-			cout << "\t0. Âûéòè" << endl;
+			cout << "Ð Ð°Ð±Ð¾Ñ‚Ð° Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð¼ " << endl;
+			cout << "\t1. ÐÑ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹ Ñ„Ð°Ð¹Ð»Ð°" << endl;
+			cout << "\t2. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹ Ñ„Ð°Ð¹Ð»Ð°" << endl;
+			cout << "\t3. Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ñ„Ð°Ð¹Ð»Ðµ" << endl;
+			cout << "\t4. Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð¼ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¸ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð¼" << endl;
+			cout << "\t5. Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¸ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð¼" << endl;
+			cout << "\t0. Ð’Ñ‹Ð¹Ñ‚Ð¸" << endl;
 			cin >> k;
 			switch (k)
 			{
@@ -248,12 +248,12 @@ void FileCharset()
 				B = SetFileAttributes(BufN, w);
 				
 				if (B!=0) FileAttrs(w);
-				if (B == 0) cerr << "Íå óäàëîñü óñòàíîâèòü àòðèáóòû, ïîïðîáóéòå åù¸ ðàç. Îøèáêà "<<GetLastError() << endl;
+				if (B == 0) cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹, Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÐµÑ‰Ñ‘ Ñ€Ð°Ð·. ÐžÑˆÐ¸Ð±ÐºÐ° "<<GetLastError() << endl;
 				break;
 			case '3':
 				system("cls");
 				B = GetFileInformationByHandle(fHandle, &fInf);
-				if (B==0)  cerr << "Íå óäàëîñü ïîëó÷èòü èíôîðìàöèþ î ôàéëå. Îøèáêà " << GetLastError() << endl;
+				if (B==0)  cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ñ„Ð°Ð¹Ð»Ðµ. ÐžÑˆÐ¸Ð±ÐºÐ° " << GetLastError() << endl;
 				else {
 					FileInf(fInf);
 				}
@@ -265,33 +265,33 @@ void FileCharset()
 			case '5':
 				system("cls");
 				SFileT(fHandle);
-				cout << "Òåêóùåå âðåìÿ óñòàíîâëåííî, êàê íîâîå âðåìåííîå âçàèìîäåéñòâèå ñ ôàéëîì" << endl;
+				cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ð¾, ÐºÐ°Ðº Ð½Ð¾Ð²Ð¾Ðµ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ðµ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ Ñ Ñ„Ð°Ð¹Ð»Ð¾Ð¼" << endl;
 				break;
 			case '0':
-				cout << "Âû âåðíóëèñü íàçàä" << endl;
+				cout << "Ð’Ñ‹ Ð²ÐµÑ€Ð½ÑƒÐ»Ð¸ÑÑŒ Ð½Ð°Ð·Ð°Ð´" << endl;
 				CloseHandle(fHandle);
 				break;
 			default:
-				cout << "Òàêîãî ïóíêòà íåò" << endl;
+				cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð½ÐµÑ‚" << endl;
 				break;
 			}
 		} while (k != '0');
 	}
-	else cout << "Íå óäàëîñü îòêðûòü ôàéë" << endl;
+	else cout << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»" << endl;
 }
 
 void CreationFile()
 {
 	HANDLE fHandle;
 	TCHAR BufN[MAX_PATH + 1];
-	cout << "Ââåäèòå ïóòü ïî êîòîðîìó íóæíî ñîçäàòü ôàéë âìåñòå ñ èìåíåì è ðàñøèðèíèåì ôàéëà íà êîíöå" << endl;
-	cout << "Ïðèìåð: C:\\myfile.txt"<<endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ð¿Ð¾ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» Ð²Ð¼ÐµÑÑ‚Ðµ Ñ Ð¸Ð¼ÐµÐ½ÐµÐ¼ Ð¸ Ñ€Ð°ÑÑˆÐ¸Ñ€Ð¸Ð½Ð¸ÐµÐ¼ Ñ„Ð°Ð¹Ð»Ð° Ð½Ð° ÐºÐ¾Ð½Ñ†Ðµ" << endl;
+	cout << "ÐŸÑ€Ð¸Ð¼ÐµÑ€: C:\\myfile.txt"<<endl;
 	wcin >> BufN;
 	fHandle = CreateFile(BufN, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
 		NULL, NULL, CREATE_NEW, NULL, NULL);
 	if (fHandle != INVALID_HANDLE_VALUE)
-		cout << "Ôàéë óñïåøíî ñîçäàí" << endl;
-	else cerr << "Ïðè ñîçäàíèè ôàéëà ïðîèçîøëà îøèáêà " << GetLastError()<<endl;
+		cout << "Ð¤Ð°Ð¹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½" << endl;
+	else cerr << "ÐŸÑ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ð¿Ñ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ° " << GetLastError()<<endl;
 	CloseHandle(fHandle);
 }
 void CreationDirectory()
@@ -300,35 +300,35 @@ void CreationDirectory()
 
 	TCHAR BufN[MAX_PATH+1];
 	BOOL B = 0;
-	cout << "Ðàáîòà ñ êàòàëîãîì: " << endl;
-	cout << "\t1. Ñîçäàíèå êàòàëîãà" << endl;
-	cout << "\t2. Óäàëåíèå êàòàëîãà" << endl;
-	cout << "\t3. Íàçàä" << endl;
+	cout << "Ð Ð°Ð±Ð¾Ñ‚Ð° Ñ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð¾Ð¼: " << endl;
+	cout << "\t1. Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°" << endl;
+	cout << "\t2. Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°" << endl;
+	cout << "\t3. ÐÐ°Ð·Ð°Ð´" << endl;
 	do {
 		cin >> k;
 		switch (k)
 		{
 		case '1':
-			cout << "Ââåäèòå ïóòü ñ óêàçàíèå íîâîãî êàòàëîãà" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°" << endl;
 			wcin >> BufN;
 			B = CreateDirectory(BufN, NULL);
-			if (B == 0) cerr << "Íå óäàëîñü ñîçäàòü êàòàëîã " << GetLastError() << endl;
-			else cout << "Êàòàëîã ñîçäàí óñïåøíî!" << endl;
+			if (B == 0) cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³ " << GetLastError() << endl;
+			else cout << "ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³ ÑÐ¾Ð·Ð´Ð°Ð½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾!" << endl;
 			
 			break;
 		case '2':
-			cout << "Ââåäèòå ïóòü ñ óêàçàíèå ñóùåñòâóþùåãî äèàëîãà êàòàëîãà" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¸Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð° ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°" << endl;
 			wcin >> BufN;
 			B = RemoveDirectory(BufN);
-			if (B == 0) cerr << "Íå óäàëîñü óäàëèòü êàòàëîã " << GetLastError() << endl;
-			else cout << "Êàòàëîã óäàë¸í óñïåøíî!" << endl;
+			if (B == 0) cerr << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³ " << GetLastError() << endl;
+			else cout << "ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³ ÑƒÐ´Ð°Ð»Ñ‘Ð½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾!" << endl;
 
 			break;
 		case '3':
-			cout << "Âû âåðíóëèñü íàçàä\n" << endl;
+			cout << "Ð’Ñ‹ Ð²ÐµÑ€Ð½ÑƒÐ»Ð¸ÑÑŒ Ð½Ð°Ð·Ð°Ð´\n" << endl;
 			break;
 		default:
-			cout << "Òàêîãî ïóíêòà íåò" << endl;
+			cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð½ÐµÑ‚" << endl;
 			break;
 		}
 	} while (k!='1'&& k!='2'&& k!='3'&& B==0);
@@ -344,37 +344,37 @@ void DetailedDriveType(UINT d)
 	{
 	case DRIVE_UNKNOWN:
 	{
-		cout << "Òèï íåèçâåñòåí";
+		cout << "Ð¢Ð¸Ð¿ Ð½ÐµÐ¸Ð·Ð²ÐµÑÑ‚ÐµÐ½";
 	}
 	break;
 	case DRIVE_NO_ROOT_DIR:
 	{
-		cout << "Íåâåðíûé ïóòü";
+		cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð¿ÑƒÑ‚ÑŒ";
 	}
 	break;
 	case DRIVE_REMOVABLE:
 	{
-		cout << "Ñúåìíûé";
+		cout << "Ð¡ÑŠÐµÐ¼Ð½Ñ‹Ð¹";
 	}
 	break;
 	case DRIVE_FIXED:
 	{
-		cout << "Ôèêñèðîâàííûé";
+		cout << "Ð¤Ð¸ÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹";
 	}
 	break;
 	case DRIVE_REMOTE:
 	{
-		cout << "Óäàëåííûé (ñåòåâîé)";
+		cout << "Ð£Ð´Ð°Ð»ÐµÐ½Ð½Ñ‹Ð¹ (ÑÐµÑ‚ÐµÐ²Ð¾Ð¹)";
 	}
 	break;
 	case DRIVE_CDROM:
 	{
-		cout << "CD-ROM (äèñêîâîä)";
+		cout << "CD-ROM (Ð´Ð¸ÑÐºÐ¾Ð²Ð¾Ð´)";
 	}
 	break;
 	case DRIVE_RAMDISK:
 	{
-		cout << "RAM-äèñê";
+		cout << "RAM-Ð´Ð¸ÑÐº";
 	}
 	break;
 	}
@@ -384,7 +384,7 @@ void DetailedVolumeInfo(BOOL b, TCHAR* VNB, TCHAR* FS, DWORD SN, DWORD MF, DWORD
 	if (b != false)
 	{
 
-		cout << "Èìÿ ðàçäåëà: ";
+		cout << "Ð˜Ð¼Ñ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°: ";
 		for (int i = 0, j = 0; i < MAX_PATH && j!=1; i++)
 		{
 			if (VNB[i] != '\0')
@@ -392,7 +392,7 @@ void DetailedVolumeInfo(BOOL b, TCHAR* VNB, TCHAR* FS, DWORD SN, DWORD MF, DWORD
 			else j = 1;
 		}
 		cout << endl;
-		cout << "Ôàéëîâàÿ ñèñòåìà: ";
+		cout << "Ð¤Ð°Ð¹Ð»Ð¾Ð²Ð°Ñ ÑÐ¸ÑÑ‚ÐµÐ¼Ð°: ";
 		for (int i = 0, j = 0; i < MAX_PATH && j != 1; i++)
 		{
 			if (FS[i] != '\0')
@@ -400,24 +400,24 @@ void DetailedVolumeInfo(BOOL b, TCHAR* VNB, TCHAR* FS, DWORD SN, DWORD MF, DWORD
 			else j = 1;
 		}
 		cout<< endl;
-		cout << "Ìàêñèìàëüíàÿ äëèíà ôàéëà: " << MF << endl;
-		cout << "Îïöèè ôàéëîâîé ñèñòåìû: " <<FSO << endl;
-		cout << "Ñåðèéíûé íîìåð ðàçäåëà: " << SN << endl;
+		cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ Ð´Ð»Ð¸Ð½Ð° Ñ„Ð°Ð¹Ð»Ð°: " << MF << endl;
+		cout << "ÐžÐ¿Ñ†Ð¸Ð¸ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹: " <<FSO << endl;
+		cout << "Ð¡ÐµÑ€Ð¸Ð¹Ð½Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°: " << SN << endl;
 	}
-	else cout << "\nÏðîèçîøëà îøèáêà: " << GetLastError() << endl;
+	else cout << "\nÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ°: " << GetLastError() << endl;
 }
 
 void DetailedDiskSpaceInfo(BOOL b, DWORD S, DWORD BPS, DWORD FC, DWORD TC) {
 	if (b != false)
 	{
-		cout << "×èñëî ñåêòîðîâ â êëàñòåðå: " << S << endl;
-		cout << "×èñëî áàéò â ñåêòîðå: " << BPS << endl;
-		cout << "Ñâîáîäíûõ êëàñòåðîâ: " << FC << endl;
-		cout << "Âñåãî êëàñòåðîâ: " << TC << endl;
-		cout << "Äîñòóïíî ìåñòà " <<(long double(BPS)/1024.0/1024.0/1024.)*FC*S << " GB"<<endl;
-		cout << "Âñåãî ìåñòà:" << (long double(BPS) / 1024.0 / 1024.0 / 1024.) * TC * S << " GB" << endl;
+		cout << "Ð§Ð¸ÑÐ»Ð¾ ÑÐµÐºÑ‚Ð¾Ñ€Ð¾Ð² Ð² ÐºÐ»Ð°ÑÑ‚ÐµÑ€Ðµ: " << S << endl;
+		cout << "Ð§Ð¸ÑÐ»Ð¾ Ð±Ð°Ð¹Ñ‚ Ð² ÑÐµÐºÑ‚Ð¾Ñ€Ðµ: " << BPS << endl;
+		cout << "Ð¡Ð²Ð¾Ð±Ð¾Ð´Ð½Ñ‹Ñ… ÐºÐ»Ð°ÑÑ‚ÐµÑ€Ð¾Ð²: " << FC << endl;
+		cout << "Ð’ÑÐµÐ³Ð¾ ÐºÐ»Ð°ÑÑ‚ÐµÑ€Ð¾Ð²: " << TC << endl;
+		cout << "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð¼ÐµÑÑ‚Ð° " <<(long double(BPS)/1024.0/1024.0/1024.)*FC*S << " GB"<<endl;
+		cout << "Ð’ÑÐµÐ³Ð¾ Ð¼ÐµÑÑ‚Ð°:" << (long double(BPS) / 1024.0 / 1024.0 / 1024.) * TC * S << " GB" << endl;
 	}
-	else cout << "\nÏðîèçîøëà îøèáêà: " << GetLastError() << endl;
+	else cout << "\nÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ°: " << GetLastError() << endl;
 }
 
 void DiskFullInformation(LPCTSTR disk)
@@ -428,12 +428,12 @@ void DiskFullInformation(LPCTSTR disk)
 	DWORD VolumeSerialNumber,MaxFile, FSOpt, Sectors, BytePerSector, freeClusters, totalClusters;
 
 	cout << "\n===================================\n" << endl;
-	cout << "Òèï äèñêà: ";
+	cout << "Ð¢Ð¸Ð¿ Ð´Ð¸ÑÐºÐ°: ";
 	UINT d = GetDriveType(disk);
 	DetailedDriveType(d);
 	cout << endl;
 	cout << "\n===================================\n" << endl;
-	cout << "Èíôîðìàöèÿ î ðàçäåëå: ";
+	cout << "Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ: ";
 
 	BOOL b = GetVolumeInformation(disk,
 		VolumeNameBuf,
@@ -447,7 +447,7 @@ void DiskFullInformation(LPCTSTR disk)
 	cout << endl;
 	cout << "\n===================================\n" << endl;
 
-	cout << "Ñâîáîäíî ìåñòà: ";
+	cout << "Ð¡Ð²Ð¾Ð±Ð¾Ð´Ð½Ð¾ Ð¼ÐµÑÑ‚Ð°: ";
 	b = GetDiskFreeSpace(disk,
 		&Sectors,
 		&BytePerSector,
@@ -470,7 +470,7 @@ void DiskFind(unsigned int i, vector<string> buf)
 		LPCTSTR sw = stemp.c_str();
 		DiskFullInformation(sw);
 	}
-	else cout << "Òàêîãî äèñêà íåò";
+	else cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð´Ð¸ÑÐºÐ° Ð½ÐµÑ‚";
 			
 }
 
@@ -492,14 +492,14 @@ int main(char* argv[], int argc)
 	do 
 	{
 		cout << "\n";
-		cout << "Âûáåðåòå íóæíûé âàì ïóíêò ìåíþ, íàæàâ íà öèôðó íà êëàâèàòóðå, à çàòåì íàæàâ Enter:\n" << endl;
-		cout << "1. Ñïèñîê äèñêîâ"<<endl;
-		cout << "2. Ïîëó÷èòü èíôîðìàöèþ î äèñêå" << endl;
-		cout << "3. Ñîçäàíèå/óäàëåíèå êàòàëîãîâ" << endl;
-		cout << "4. Ñîçäàíèå ôàéëîâ â êàòàëîãàõ" << endl;
-		cout << "5. Êîïèðîâàíèå/ïåðåìåùåíèå ôàéëîâ" << endl;
-		cout << "6. Àíàëèç è èçìåíåíèå àòðèáóòîâ ôàéëîâ" << endl;
-		cout << "\n Ââîä>>: ";
+		cout << "Ð’Ñ‹Ð±ÐµÑ€ÐµÑ‚Ðµ Ð½ÑƒÐ¶Ð½Ñ‹Ð¹ Ð²Ð°Ð¼ Ð¿ÑƒÐ½ÐºÑ‚ Ð¼ÐµÐ½ÑŽ, Ð½Ð°Ð¶Ð°Ð² Ð½Ð° Ñ†Ð¸Ñ„Ñ€Ñƒ Ð½Ð° ÐºÐ»Ð°Ð²Ð¸Ð°Ñ‚ÑƒÑ€Ðµ, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð½Ð°Ð¶Ð°Ð² Enter:\n" << endl;
+		cout << "1. Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð´Ð¸ÑÐºÐ¾Ð²"<<endl;
+		cout << "2. ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ð´Ð¸ÑÐºÐµ" << endl;
+		cout << "3. Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ/ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð¾Ð²" << endl;
+		cout << "4. Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð² ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°Ñ…" << endl;
+		cout << "5. ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ/Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð¾Ð²" << endl;
+		cout << "6. ÐÐ½Ð°Ð»Ð¸Ð· Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² Ñ„Ð°Ð¹Ð»Ð¾Ð²" << endl;
+		cout << "\n Ð’Ð²Ð¾Ð´>>: ";
 		cin >> key;
 		cout << endl;
 		switch(key)
@@ -514,9 +514,9 @@ int main(char* argv[], int argc)
 			case '2':
 				{
 					system("cls");
-					cout << "\nÂûáåðåòå íóæíûé âàì äèñê, íàæàâ íà öèôðó íà êëàâèàòóðå, à çàòåì íàæàâ Enter:\n" << endl;
+					cout << "\nÐ’Ñ‹Ð±ÐµÑ€ÐµÑ‚Ðµ Ð½ÑƒÐ¶Ð½Ñ‹Ð¹ Ð²Ð°Ð¼ Ð´Ð¸ÑÐº, Ð½Ð°Ð¶Ð°Ð² Ð½Ð° Ñ†Ð¸Ñ„Ñ€Ñƒ Ð½Ð° ÐºÐ»Ð°Ð²Ð¸Ð°Ñ‚ÑƒÑ€Ðµ, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð½Ð°Ð¶Ð°Ð² Enter:\n" << endl;
 					DiskOutput(buf);
-					cout << "\n Ââîä>>: ";
+					cout << "\n Ð’Ð²Ð¾Ð´>>: ";
 					unsigned int i;
 					cin >> i;
 					DiskFind(i, buf);
@@ -542,11 +542,11 @@ int main(char* argv[], int argc)
 				break;
 			case '0':
 				system("cls");
-				cout << "Âûõîäèì..." << endl;
+				cout << "Ð’Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼..." << endl;
 				break;
 			default:
 				system("cls");
-				cout << "Òàêîãî ïóíêòà íå ñóùåñòâóåò\n"<<endl;
+				cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚\n"<<endl;
 				break;
 	
 		}

@@ -63,7 +63,7 @@ void cl_menu(int s)
 		break;
 
 	default:
-		cout << "Òàêîãî âàðèàíòà íåò, ïîïðîáóéòå åùå ðàç" << endl;
+		cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð° Ð½ÐµÑ‚, Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÐµÑ‰Ðµ Ñ€Ð°Ð·" << endl;
 		break;
 	}
 
@@ -100,7 +100,7 @@ void ops_menu(int s)
 		break;
 
 	default:
-		cout << "Òàêîãî âàðèàíòà íåò, ïîïðîáóéòå åùå ðàç" << endl;
+		cout << "Ð¢Ð°ÐºÐ¾Ð³Ð¾ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð° Ð½ÐµÑ‚, Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÐµÑ‰Ðµ Ñ€Ð°Ð·" << endl;
 		break;
 
 	}
@@ -136,17 +136,17 @@ int main()
 			cl_menu(c);
 			ops_menu(o);
 
-			cout << "Âûáðàííûé ðàçìåð áëîêà: " << cl_part << endl;
-			cout << "Âûáðàííîå ÷èñëî îïåðàöèé: " << ovr_opers << endl;
+			cout << "Ð’Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð±Ð»Ð¾ÐºÐ°: " << cl_part << endl;
+			cout << "Ð’Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¹: " << ovr_opers << endl;
 			cout << "=========================================" << endl;
 
 
 
 			cout << "=========================================" << endl;
 			fileSize = GetFileSize(BaseFileH, NULL);
-			cout << "\nÐàçìåð ôàéëà: " << fileSize / 1024 + (fileSize % 1024 > 0 ? 1 : 0) << endl;
+			cout << "\nÐ Ð°Ð·Ð¼ÐµÑ€ Ñ„Ð°Ð¹Ð»Ð°: " << fileSize / 1024 + (fileSize % 1024 > 0 ? 1 : 0) << endl;
 			Recs = fileSize / cl_part + (fileSize % cl_part > 0 ? 1 : 0);
-			cout << "×èñëî çàïèñåé: " << Recs << endl;
+			cout << "Ð§Ð¸ÑÐ»Ð¾ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹: " << Recs << endl;
 			cout << "=========================================" << endl;
 
 
@@ -168,7 +168,7 @@ int main()
 				if (curPos.QuadPart < fileSize)
 				{
 					B = ReadFileEx(BaseFileH, inBuffer[i], cl_part, &Bovr[i], EndReadFunc);
-					if (B == 0) cout << "Îøèáêà ïðè ÷òåíèè èç áàçîâîãî ôàéëà :" << GetLastError() << endl;
+					if (B == 0) cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ñ‡Ñ‚ÐµÐ½Ð¸Ð¸ Ð¸Ð· Ð±Ð°Ð·Ð¾Ð²Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð° :" << GetLastError() << endl;
 				}
 				curPos.QuadPart = curPos.QuadPart + (LONGLONG)cl_part;
 			}
@@ -186,7 +186,7 @@ int main()
 			SetEndOfFile(CopiedFileH);
 			t2 = timeGetTime();
 			cout << "=========================================" << endl;
-			cout << "\nÂðåìÿ êîïèðîâàíèÿ: ~" << t2 - t1 << "ms" << endl;
+			cout << "\nÐ’Ñ€ÐµÐ¼Ñ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ: ~" << t2 - t1 << "ms" << endl;
 			cout << "=========================================" << endl;
 			cout << "=========================================" << endl;
 			cout << "=========================================" << endl;
@@ -202,13 +202,13 @@ int main()
 				delete inBuffer[i];
 			delete[] inBuffer;
 			inBuffer = nullptr;
-			cout << "Ïîäîæäèòå..." << endl;
+			cout << "ÐŸÐ¾Ð´Ð¾Ð¶Ð´Ð¸Ñ‚Ðµ..." << endl;
 			SleepEx(5000, TRUE);
 		}
 		else
-			cout << "Îøèáêà ïðè îòêðûòèè ôàéëà" << endl;
-		cout << "\nÄëÿ ïðîäîëæåíèÿ ââåäèòå - 1, äëÿ âûõîäà - 0\n" << endl;
-		cout << "Ââîä>> : [";
+			cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ð¸ Ñ„Ð°Ð¹Ð»Ð°" << endl;
+		cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ - 1, Ð´Ð»Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð° - 0\n" << endl;
+		cout << "Ð’Ð²Ð¾Ð´>> : [";
 		cin >> s;
 		if (s == 1) {
 			if (o + 1 == 6) { c++; o = 0; res << "\n"; }
@@ -238,7 +238,7 @@ VOID CALLBACK EndReadFunc(DWORD error, DWORD countOfBytes, LPOVERLAPPED pOvr)
 		Covr[k].Offset = Bovr[k].Offset;
 		Covr[k].OffsetHigh = Bovr[k].OffsetHigh;
 		B = WriteFileEx(CopiedFileH, inBuffer[k], cl_part, &Covr[k], EndWriteFunc);
-		if (B == 0) cout << "Îøèáêà ïðè çàïèñè â ôàéë :" << GetLastError() << endl;
+		if (B == 0) cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ñ„Ð°Ð¹Ð» :" << GetLastError() << endl;
 		curPosIn.QuadPart += cl_part * (LONGLONG)(ovr_opers);
 		Bovr[k].Offset = curPosIn.LowPart;
 		Bovr[k].OffsetHigh = curPosIn.HighPart;
@@ -263,7 +263,7 @@ VOID CALLBACK EndWriteFunc(DWORD error, DWORD countOfBytes, LPOVERLAPPED pOvr)
 		if (curPos.QuadPart < fileSize)
 		{
 			B = ReadFileEx(BaseFileH, inBuffer[k], cl_part, &Bovr[k], EndReadFunc);
-			if (B == 0) cout << "Îøèáêà ïðè ÷òåíèè èç áàçîâîãî ôàéëà :" << GetLastError() << endl;
+			if (B == 0) cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ñ‡Ñ‚ÐµÐ½Ð¸Ð¸ Ð¸Ð· Ð±Ð°Ð·Ð¾Ð²Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð° :" << GetLastError() << endl;
 		}
 	}
 	
